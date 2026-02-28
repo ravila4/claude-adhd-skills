@@ -8,11 +8,6 @@
       },
       {
         "type": "command",
-        "command": "python3 ~/.claude/hooks/work.py current",
-        "timeout": 5000
-      },
-      {
-        "type": "command",
         "command": "python3 ~/.claude/hooks/check_alerts.py",
         "timeout": 5000
       }

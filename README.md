@@ -10,7 +10,6 @@ Claude Code skills and hooks for ADHD-friendly development workflows with Obsidi
 |-------|-------------|
 | **daily-journal** | Conversational daily journaling -- asks you about your day instead of generating reports from commit logs. Writes to Obsidian. |
 | **obsidian-vault** | Vault-aware note management -- folder hierarchy, naming conventions, frontmatter, internal linking. |
-| **work-tracker** | Lightweight time tracking with SQLite. Surfaces current task on every prompt. |
 | **nudge** | Time-based reminders that fire on prompt submission. "Stop me at 11" or "remind me about standup in 30m". |
 | **test-driven-development** | Logic Gate + Iron Rule: triage what needs tests, then strict test-first for anything with logic. |
 
@@ -18,7 +17,6 @@ Claude Code skills and hooks for ADHD-friendly development workflows with Obsidi
 
 | Hook | What it does |
 |------|-------------|
-| **work.py** | Time tracker CLI. Start/end tasks, auto-end on context switch. |
 | **check_alerts.py** | Checks for due nudges on every prompt submission. |
 | **add_alert.py** | Adds a new timed nudge (`+30m`, `23:00`, etc.). |
 | **ack_alert.py** | Dismisses a fired nudge. |
@@ -49,7 +47,7 @@ Copy the hook configuration into your Claude Code settings. The settings file is
 
 See `settings.json.example` for the full config. The key hooks are:
 
-- **UserPromptSubmit**: Runs on every prompt. Shows current time, active work session, and any due nudges.
+- **UserPromptSubmit**: Runs on every prompt. Shows current time and any due nudges.
 
 ```json
 {
@@ -58,11 +56,6 @@ See `settings.json.example` for the full config. The key hooks are:
       {
         "type": "command",
         "command": "echo \"Today is $(date '+%A, %B %d, %Y'). Time: $(date '+%H:%M')\"",
-        "timeout": 5000
-      },
-      {
-        "type": "command",
-        "command": "python3 ~/.claude/hooks/work.py current",
         "timeout": 5000
       },
       {
@@ -115,13 +108,11 @@ You type a prompt
     v
 [UserPromptSubmit hooks fire]
     |-- Time stamp shows current time
-    |-- work.py shows active task + duration
     |-- check_alerts.py shows any due nudges
     |
     v
 Claude sees all of this context
     |-- Knows what time it is (morning/evening mode)
-    |-- Knows what you're working on
     |-- Can remind you to stop / take a break
     |
     v
@@ -135,11 +126,11 @@ You say "/daily-journal"
 
 These tools are designed around a few principles that work for my ADHD brain:
 
-**Passive over active.** The time tracker and nudge system surface information *to you* -- you don't have to remember to check anything. They fire on every prompt submission, which means they work as long as you're working.
+**Passive over active.** The nudge system surfaces information *to you* -- you don't have to remember to check anything. It fires on every prompt submission, which means it works as long as you're working.
 
 **Conversation over reports.** The daily journal asks you what mattered, not what your git log says. Commits are often mechanical. What you *focused on* and *how it felt* is what future-you needs to know.
 
-**Low ceremony.** Starting a task is one command. Setting a reminder is one command. Writing a journal entry is a conversation. Nothing requires opening a separate app or filling out a form.
+**Low ceremony.** Setting a reminder is one command. Writing a journal entry is a conversation. Nothing requires opening a separate app or filling out a form.
 
 **Break suggestions built in.** The CLAUDE.md instructs Claude to suggest breaks after extended focus sessions and after completing significant work. The nudge system lets you set hard stops ("stop me at 11 PM").
 

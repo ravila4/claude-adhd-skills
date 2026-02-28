@@ -1,0 +1,5 @@
+*.db
+__pycache__/
+*.pyc
+README.html
+README_files/
