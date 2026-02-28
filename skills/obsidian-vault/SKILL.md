@@ -108,7 +108,29 @@ Store and reference images/files correctly:
 - Use descriptive names for images
 - Include context: `docker_architecture_diagram.png`
 
-### 5. Tag System
+### 5. Semantic Search
+
+Use [`obsidian-semantic`](https://github.com/ravila4/obsidian-semantic) to find existing notes by meaning, not just keywords.
+
+```bash
+# Find notes about a topic
+obsidian-semantic search "dependency injection patterns" -n 5
+
+# Find notes related to a specific note
+obsidian-semantic related "Programming/Python/Unit Testing.md" -n 5
+
+# Search within a folder
+obsidian-semantic search "docker" --folder "Programming/"
+
+# Filter by tag
+obsidian-semantic search "habits" --tag "review"
+```
+
+**When to use `search`:** Before creating new notes (check for duplicates/related content), when looking for notes to link to, when user asks to find notes on a topic.
+
+**When to use `related`:** After creating/updating a note to suggest links, when user asks "what's related to X?"
+
+### 6. Tag System
 
 Apply appropriate tags from established taxonomy:
 
@@ -165,14 +187,14 @@ All notes must:
 
 ### Creating a New Note
 
-1. Search vault for existing related content
+1. Search vault with `obsidian-semantic search "<topic>" -n 5` for existing related content
 2. Decide: extend existing or create new
 3. Determine correct folder from hierarchy
 4. Choose appropriate filename
 5. Add YAML frontmatter with tags
 6. Format content with H2+ headers
 7. Include code examples if technical
-8. Add internal links
+8. Add internal links (use `obsidian-semantic related "<note_path>" -n 5` to find candidates)
 9. Store any images in folder's `attachments/`
 
 ### Updating an Existing Note

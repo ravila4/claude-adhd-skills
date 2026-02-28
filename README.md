@@ -1,6 +1,6 @@
 # claude-adhd-skills
 
-Claude Code skills and hooks for ADHD-friendly development workflows with Obsidian integration. These are tools I use daily, but still a work in progress.
+This is a set of Claude Code skills and hooks that I use every day as a framework for developing with agents, and managing my ADHD. The workflows are still evolving, but central to is Obsidian integration, time awareness for Claude (date command in post hook), and task reminders. Naturally, these can be used by anybody (ADHD not required).
 
 ## What's in here
 
@@ -11,12 +11,13 @@ Claude Code skills and hooks for ADHD-friendly development workflows with Obsidi
 | **daily-journal** | Conversational daily journaling -- asks you about your day instead of generating reports from commit logs. Writes to Obsidian. |
 | **obsidian-vault** | Vault-aware note management -- folder hierarchy, naming conventions, frontmatter, internal linking. |
 | **nudge** | Time-based reminders that fire on prompt submission. "Stop me at 11" or "remind me about standup in 30m". |
-| **test-driven-development** | Logic Gate + Iron Rule: triage what needs tests, then strict test-first for anything with logic. |
+| **test-driven-development** | Logic Gate + Iron Rule (based on obra's TDD skill): triage what needs tests, then strict test-first for anything with logic. |
 
 ### Hooks
 
 | Hook | What it does |
 |------|-------------|
+| **date hook** | Injects current date and time into every prompt so Claude knows when it is. Enables time-aware journaling (morning/evening modes) |
 | **check_alerts.py** | Checks for due nudges on every prompt submission. |
 | **add_alert.py** | Adds a new timed nudge (`+30m`, `23:00`, etc.). |
 | **ack_alert.py** | Dismisses a fired nudge. |
@@ -31,7 +32,7 @@ A starting point for your own `CLAUDE.md` with ADHD-specific patterns: break sug
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/claude-adhd-skills.git
+git clone https://github.com/ravila4/claude-adhd-skills.git
 cd claude-adhd-skills
 
 # Copy skills into your Claude Code skills directory
@@ -102,24 +103,34 @@ Both the obsidian-vault and daily-journal skills use tags. Look for `<!-- Add yo
 
 ## How the pieces fit together
 
-```
-You type a prompt
-    |
-    v
-[UserPromptSubmit hooks fire]
-    |-- Time stamp shows current time
-    |-- check_alerts.py shows any due nudges
-    |
-    v
-Claude sees all of this context
-    |-- Knows what time it is (morning/evening mode)
-    |-- Can remind you to stop / take a break
-    |
-    v
-You say "/daily-journal"
-    |-- Claude asks about your day (conversation first)
-    |-- Offers git/session data as memory jogger
-    |-- Writes structured entry to Obsidian vault
+```mermaid
+flowchart TD
+    A[You type a prompt] --> B[UserPromptSubmit hooks fire]
+
+    B --> B1["Date hook: injects current time"]
+    B --> B2["check_alerts.py: surfaces due nudges"]
+
+    B1 & B2 --> C[Claude sees all context]
+    C --> C1["Knows what time it is\n(morning/evening mode)"]
+    C --> C2["Can remind you to stop\nor take a break"]
+
+    C1 & C2 --> D{What do you need?}
+
+    D -->|"Session notes"| E["/daily-journal"]
+    E --> E1["Asks about your day\n(conversation first)"]
+    E1 --> E2["Offers git data as\nmemory jogger"]
+    E2 --> E3["Writes structured entry\nto Obsidian vault"]
+
+    D -->|"General notes"| F["/obsidian-vault"]
+    F --> F1["Create/update notes\nin your vault"]
+    F1 --> F2["Search with\nobsidian-semantic"]
+
+    D -->|"Keep working"| G["Nudges fire when due\nbreaks suggested after\nextended focus"]
+
+    style B1 fill:#e8f4e8
+    style B2 fill:#e8f4e8
+    style E3 fill:#e8e8f4
+    style F1 fill:#e8e8f4
 ```
 
 ## The ADHD philosophy
@@ -158,6 +169,7 @@ The CLAUDE.md includes an auto-memory system where Claude maintains a `MEMORY.md
 - Python 3.10+
 - [Obsidian](https://obsidian.md/) (for the vault and journal skills)
 - SQLite3 (usually pre-installed)
+- [obsidian-semantic](https://github.com/ravila4/obsidian-semantic) (optional, for semantic search in the obsidian-vault skill)
 
 ## License
 

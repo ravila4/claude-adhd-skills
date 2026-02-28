@@ -72,7 +72,7 @@ Auto-memory is a scratch pad for discovering and incubating project-specific ski
 - Remove stale or incorrect information immediately. Memory rot is worse than no memory.
 - When you notice something to fix but it's unrelated to the current task, note it in memory instead of acting on it.
 - Store reusable scripts in a `scripts/` subdirectory. If you write the same scratch code twice, make it a script. Scratch code = anything run in a REPL (`uv run python -c "..."`), one-off `.scratch/` scripts, or ad-hoc exploration code.
-- When a pattern matures, flag it for promotion to a standalone skill.
+- When a pattern matures, we will flag it for promotion to a standalone skill.
 - Git-track the memory directory (`git init` in-place). Commit after significant changes.
 
 # Tools
