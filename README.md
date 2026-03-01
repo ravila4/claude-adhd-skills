@@ -4,7 +4,7 @@
 
 A set of Claude Code skills and hooks I use daily as scaffolding for staying organized while developing with AI agents. The key pieces are time awareness (so Claude knows when to tell me to stop), Obsidian integration (so I can store research and reconstruct what I was doing yesterday), and a nudge system (so promises to "wrap up in 30 minutes" actually stick).
 
-[Obsidian](https://obsidian.md/) is central to the workflow. It's where daily logs, meeting notes, research and ideas land, and because agents can read and write to the vault, it becomes a shared memory between sessions. I can point a new Claude instance at yesterday's journal entry and ask the agent to catch up instead of re-explaining context. Ideas get dumped into notes, marinate, and only the ones that survive get built. [obsidian-semantic](https://github.com/ravila4/obsidian-semantic) closes the loop, letting agents search notes by meaning, not just filenames.
+[Obsidian](https://obsidian.md/) is central to the workflow. It's where daily logs, meeting notes, research and ideas land, and because agents can read and write to the vault, it becomes a shared memory between sessions. I can point a new Claude instance at yesterday's journal entry and ask the agent to catch up instead of re-explaining context. Ideas get dumped into notes, marinate, and only the ones that survive get built. [obsidian-semantic](https://github.com/ravila4/obsidian-semantic-search) closes the loop, letting agents search notes by meaning, not just filenames.
 
 ## What's in the box
 
@@ -127,7 +127,7 @@ Tags live in `vault_structure.md` and `markdown_formatting.md`. Add your domain-
 - Python 3.10+
 - [Obsidian](https://obsidian.md/) (for the vault and journal skills)
 - SQLite3 (usually pre-installed)
-- [obsidian-semantic](https://github.com/ravila4/obsidian-semantic) (optional, for semantic search in the obsidian-vault skill)
+- [obsidian-semantic](https://github.com/ravila4/obsidian-semantic-search) (optional, for semantic search in the obsidian-vault skill)
 
 ## License
 

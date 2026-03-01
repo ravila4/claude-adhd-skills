@@ -110,7 +110,7 @@ Store and reference images/files correctly:
 
 ### 5. Semantic Search
 
-Use [`obsidian-semantic`](https://github.com/ravila4/obsidian-semantic) to find existing notes by meaning, not just keywords.
+Use [`obsidian-semantic`](https://github.com/ravila4/obsidian-semantic-search) to find existing notes by meaning, not just keywords.
 
 ```bash
 # Find notes about a topic
