@@ -26,7 +26,7 @@ A set of Claude Code skills and hooks I use daily as scaffolding for staying org
 | **add_alert.py** | Adds a new timed nudge (`+30m`, `23:00`, etc.). |
 | **ack_alert.py** | Dismisses a fired nudge. |
 
-### CLAUDE.md.example
+### CLAUDE.md
 
 A starting point for your own `CLAUDE.md`. I have found that the following ADHD-specific patterns help me: break suggestions, pacing, focus tracking, and a working relationship that prioritizes asking over assuming.
 
@@ -75,10 +75,10 @@ See `settings.json.example` for the full config. The key hooks are:
 
 ### 3. Set up your CLAUDE.md
 
-Copy `CLAUDE.md.example` to `~/.claude/CLAUDE.md` and fill in the `{PLACEHOLDERS}`:
+Copy `CLAUDE.md` to `~/.claude/CLAUDE.md` and fill in the `{PLACEHOLDERS}`:
 
 ```bash
-cp CLAUDE.md.example ~/.claude/CLAUDE.md
+cp CLAUDE.md ~/.claude/CLAUDE.md
 ```
 
 Edit the file and replace:
@@ -110,7 +110,7 @@ Both the obsidian-vault and daily-journal skills use tags. Look for `<!-- Add yo
 
 ### Adding domain-specific knowledge
 
-The `CLAUDE.md.example` has a "Technical Knowledge" section. Add your own domain expertise here: books, frameworks, tools. This shapes how Claude approaches problems with you.
+The `CLAUDE.md` has a "Technical Knowledge" section. Add your own domain expertise here: books, frameworks, tools. This shapes how Claude approaches problems with you.
 
 ### Extending the vault structure
 
