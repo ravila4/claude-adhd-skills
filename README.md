@@ -1,17 +1,21 @@
 # claude-adhd-skills
 
-This is a set of Claude Code skills and hooks that I use every day as a framework for developing with agents, and managing my ADHD. The workflows are still evolving, but central to is Obsidian integration, time awareness for Claude (date command in post hook), and task reminders. Naturally, these can be used by anybody (ADHD not required).
+(No ADHD required!)
 
-## What's in here
+A set of Claude Code skills and hooks I use daily as scaffolding for staying organized while developing with AI agents. The key pieces are time awareness (so Claude knows when to tell me to stop), Obsidian integration (so I can store research and reconstruct what I was doing yesterday), and a nudge system (so promises to "wrap up in 30 minutes" actually stick).
+
+[Obsidian](https://obsidian.md/) is central to the workflow. It's where daily logs, meeting notes, research and ideas land, and because agents can read and write to the vault, it becomes a shared memory between sessions. I can point a new Claude instance at yesterday's journal entry and ask the agent to catch up instead of re-explaining context. Ideas get dumped into notes, marinate, and only the ones that survive get built. [obsidian-semantic](https://github.com/ravila4/obsidian-semantic) closes the loop, letting agents search notes by meaning, not just filenames.
+
+## What's in the box
 
 ### Skills
 
 | Skill | What it does |
 |-------|-------------|
-| **daily-journal** | Conversational daily journaling -- asks you about your day instead of generating reports from commit logs. Writes to Obsidian. |
-| **obsidian-vault** | Vault-aware note management -- folder hierarchy, naming conventions, frontmatter, internal linking. |
+| **daily-journal** | Conversational daily journaling. Asks you about your day instead of generating reports from commit logs. Writes to Obsidian. ([examples](examples/daily-log/)) |
+| **obsidian-vault** | Vault-aware note management: folder hierarchy, naming conventions, frontmatter, internal linking. |
 | **nudge** | Time-based reminders that fire on prompt submission. "Stop me at 11" or "remind me about standup in 30m". |
-| **test-driven-development** | Logic Gate + Iron Rule (based on obra's TDD skill): triage what needs tests, then strict test-first for anything with logic. |
+| **test-driven-development** |  Logic Gate + Iron Rule (based on obra's original Red/Green TDD skill): triage what needs tests, then strict test-first for anything with logic. |
 
 ### Hooks
 
@@ -24,7 +28,7 @@ This is a set of Claude Code skills and hooks that I use every day as a framewor
 
 ### CLAUDE.md.example
 
-A starting point for your own `CLAUDE.md` with ADHD-specific patterns: break suggestions, pacing, focus tracking, and a working relationship that prioritizes asking over assuming.
+A starting point for your own `CLAUDE.md`. I have found that the following ADHD-specific patterns help me: break suggestions, pacing, focus tracking, and a working relationship that prioritizes asking over assuming.
 
 ## Installation
 
@@ -78,11 +82,11 @@ cp CLAUDE.md.example ~/.claude/CLAUDE.md
 ```
 
 Edit the file and replace:
-- `{YOUR_NAME}` -- your name
-- `{YOUR_ROLE}` -- your job title or role
-- `{WHAT_YOU_DO}` -- brief description of your work
-- `{YOUR_PLATFORM}` -- your machine/OS (e.g., "MacBook Pro, macOS")
-- `{YOUR_WORK_DOMAIN}` -- your work domain (e.g., "web development", "data engineering")
+- `{YOUR_NAME}`: your name
+- `{YOUR_ROLE}`: your job title or role
+- `{WHAT_YOU_DO}`: brief description of your work
+- `{YOUR_PLATFORM}`: your machine/OS (e.g., "MacBook Pro, macOS")
+- `{YOUR_WORK_DOMAIN}`: your work domain (e.g., "web development", "data engineering")
 
 ### 4. Customize the Obsidian vault skill
 
@@ -95,7 +99,7 @@ description: Manage Obsidian vault operations. Handles markdown formatting...
 description: Manage Obsidian vault operations for my vault at ~/path/to/your/vault. Handles markdown formatting...
 ```
 
-Then customize `references/vault_structure.md` to match your actual folder hierarchy. The default is minimal (Programming, Projects, Daily Log, Templates) -- add your own topic folders.
+Then customize `references/vault_structure.md` to match your actual folder hierarchy. The default is minimal (Programming, Projects, Daily Log, Templates). Add your own topic folders.
 
 ### 5. Customize tags
 
@@ -133,23 +137,12 @@ flowchart TD
     style F1 fill:#e8e8f4
 ```
 
-## The ADHD philosophy
-
-These tools are designed around a few principles that work for my ADHD brain:
-
-**Passive over active.** The nudge system surfaces information *to you* -- you don't have to remember to check anything. It fires on every prompt submission, which means it works as long as you're working.
-
-**Conversation over reports.** The daily journal asks you what mattered, not what your git log says. Commits are often mechanical. What you *focused on* and *how it felt* is what future-you needs to know.
-
-**Low ceremony.** Setting a reminder is one command. Writing a journal entry is a conversation. Nothing requires opening a separate app or filling out a form.
-
-**Break suggestions built in.** The CLAUDE.md instructs Claude to suggest breaks after extended focus sessions and after completing significant work. The nudge system lets you set hard stops ("stop me at 11 PM").
 
 ## Customization
 
 ### Adding domain-specific knowledge
 
-The `CLAUDE.md.example` has a "Technical Knowledge" section. Add your own domain expertise here -- books, frameworks, tools. This shapes how Claude approaches problems with you.
+The `CLAUDE.md.example` has a "Technical Knowledge" section. Add your own domain expertise here: books, frameworks, tools. This shapes how Claude approaches problems with you.
 
 ### Extending the vault structure
 
@@ -159,9 +152,6 @@ Add folders to `vault_structure.md` for your own knowledge domains. The skill us
 
 Tags live in `vault_structure.md` and `markdown_formatting.md`. Add your domain-specific tags to the taxonomy.
 
-### Auto Memory
-
-The CLAUDE.md includes an auto-memory system where Claude maintains a `MEMORY.md` file per project. This captures patterns, conventions, and lessons learned across sessions. It's a scratch pad that eventually graduates into proper skills.
 
 ## Requirements
 

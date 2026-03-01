@@ -6,16 +6,22 @@ This document defines the folder hierarchy, naming conventions, and organization
 
 ## Contents
 
-- [Folder Hierarchy](#folder-hierarchy)
-- [Attachment Storage Rules](#attachment-storage-rules)
-- [File Naming Conventions](#file-naming-conventions)
-- [Index Files and Waypoint Plugin](#index-files-and-waypoint-plugin)
-- [Note Placement Decision Tree](#note-placement-decision-tree)
-- [Folder Creation Rules](#folder-creation-rules)
-- [Tag Organization](#tag-organization)
-- [Cross-Folder Linking](#cross-folder-linking)
-- [Ambiguous Cases](#ambiguous-cases)
-- [Quality Guidelines](#quality-guidelines)
+- [Obsidian Vault Structure](#obsidian-vault-structure)
+  - [Contents](#contents)
+  - [Folder Hierarchy](#folder-hierarchy)
+    - [Folder Purposes](#folder-purposes)
+  - [Attachment Storage Rules](#attachment-storage-rules)
+  - [File Naming Conventions](#file-naming-conventions)
+    - [Regular Notes](#regular-notes)
+    - [Daily Notes](#daily-notes)
+    - [Meeting Notes](#meeting-notes)
+  - [Index Files and Waypoint Plugin](#index-files-and-waypoint-plugin)
+  - [Note Placement Decision Tree](#note-placement-decision-tree)
+  - [Folder Creation Rules](#folder-creation-rules)
+  - [Tag Organization](#tag-organization)
+  - [Cross-Folder Linking](#cross-folder-linking)
+  - [Ambiguous Cases](#ambiguous-cases)
+  - [Quality Guidelines](#quality-guidelines)
 
 ## Folder Hierarchy
 
@@ -27,7 +33,6 @@ The vault uses this top-level folder structure:
 Obsidian-Notes/
 ├── Programming/
 │   ├── Python/
-│   ├── UNIX/
 │   └── attachments/
 ├── Projects/
 │   └── attachments/
@@ -40,7 +45,7 @@ Obsidian-Notes/
 
 **Programming/**
 - General programming concepts, languages, tools
-- Subfolders for specific languages (Python/, UNIX/)
+- Subfolders for specific languages (Python/, Rust/)
 - Technical documentation, code patterns, tool usage
 
 **Projects/**
