@@ -15,7 +15,7 @@ A set of Claude Code skills and hooks I use daily as scaffolding for staying org
 | **daily-journal** | Conversational daily journaling. Asks you about your day instead of generating reports from commit logs. Writes to Obsidian. ([examples](examples/daily-log/)) |
 | **obsidian-vault** | Vault-aware note management: folder hierarchy, naming conventions, frontmatter, internal linking. |
 | **nudge** | Time-based reminders that fire on prompt submission. "Stop me at 11" or "remind me about standup in 30m". |
-| **test-driven-development** |  Logic Gate + Iron Rule (based on obra's original Red/Green TDD skill): triage what needs tests, then strict test-first for anything with logic. |
+| **test-driven-development** |  Logic Gate + Iron Rule (based on obra's original Red/Green TDD skill): triage what needs tests, then strict test-first for anything with logic. (Just good general development practices, but mentioned in my CLAUDE.md) |
 
 ### Hooks
 
