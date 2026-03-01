@@ -105,38 +105,6 @@ Then customize `references/vault_structure.md` to match your actual folder hiera
 
 Both the obsidian-vault and daily-journal skills use tags. Look for `<!-- Add your own ... -->` comments in the reference files and add tags relevant to your work.
 
-## How the pieces fit together
-
-```mermaid
-flowchart TD
-    A[You type a prompt] --> B[UserPromptSubmit hooks fire]
-
-    B --> B1["Date hook: injects current time"]
-    B --> B2["check_alerts.py: surfaces due nudges"]
-
-    B1 & B2 --> C[Claude sees all context]
-    C --> C1["Knows what time it is\n(morning/evening mode)"]
-    C --> C2["Can remind you to stop\nor take a break"]
-
-    C1 & C2 --> D{What do you need?}
-
-    D -->|"Session notes"| E["/daily-journal"]
-    E --> E1["Asks about your day\n(conversation first)"]
-    E1 --> E2["Offers git data as\nmemory jogger"]
-    E2 --> E3["Writes structured entry\nto Obsidian vault"]
-
-    D -->|"General notes"| F["/obsidian-vault"]
-    F --> F1["Create/update notes\nin your vault"]
-    F1 --> F2["Search with\nobsidian-semantic"]
-
-    D -->|"Keep working"| G["Nudges fire when due\nbreaks suggested after\nextended focus"]
-
-    style B1 fill:#e8f4e8
-    style B2 fill:#e8f4e8
-    style E3 fill:#e8e8f4
-    style F1 fill:#e8e8f4
-```
-
 
 ## Customization
 
